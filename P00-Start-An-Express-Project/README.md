@@ -1,8 +1,3 @@
----
-title: "Making A Plan & Starting an Express.js Project"
-slug: start-an-express-project
----
-
 You might know the website [EventBrite](https://eventbrite.com). It is a site where people can find great events to attend. In this tutorial you are going to build **Make Parties** - your very own event website.
 
 ![finished example](assets/finished-example.png)
