@@ -56,15 +56,13 @@ As we finish our user stories we'll be committing to GitHub 🐙.
 
 Now that we have some user stories, let's initialize an Express.js project so we can start on the first user story in the next chapter of this tutorial.
 
-> [action]
->
-> If you are using Cloud9
->
-> 1. Select "Create a New Workspace"
-> 1. Name your project 'make-parties'
-> 1. At the bottom select a HTML5 template
-> 1. Delete the hello-world file.
-> 1. You are good to go!
+If you are using Cloud9
+
+1. Select "Create a New Workspace"
+1. Name your project 'make-parties'
+1. At the bottom select a HTML5 template
+1. Delete the hello-world file.
+1. You are good to go!
 
 # Getting Started - Setting up your Computer
 
