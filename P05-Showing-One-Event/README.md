@@ -31,10 +31,8 @@ Remember, always start by building what the user will see and do. To create the 
 
 SQL automatically creates an `id` attribute on anything you save. So we can use that `id` attribute for our `:id` in the route. This is called the **Url or Request Parameter** and we access it in Express using the `req.params` parameter inside a controller route.
 
-> [action]
->
 > Add the `View` link in `views/events-index.handlebars` to the following:
->
+
 ```html
 <!-- views/events-index.handlebars -->
 >
@@ -45,10 +43,9 @@ SQL automatically creates an `id` attribute on anything you save. So we can use 
 
 What happens if you click on that link? A friendly error! Let's do what it says and make the route.
 
-> [action]
->
+
 > Build the `/show` route in `app.js`:
->
+
 ```js
 // app.js
 >
@@ -68,10 +65,8 @@ _Taking baby steps like this is a GREAT habit as a software engineer. Aim to tak
 
 Ok time to add a template with an actual `event` object! We'll update our `/show` route to find the event we're looking for by its `id` using sequelize's [findByPk](http://docs.sequelizejs.com/class/lib/model.js~Model.html#static-method-findByPk) method, which searches for a single instance by its primary key (which is the event `id`, in this case).
 
-> [action]
->
 > Replace your stub `/show` route in `app.js` with the following:
->
+
 ```js
 // app.js
 >
@@ -92,10 +87,9 @@ app.get('/events/:id', (req, res) => {
 
 Now if we go to the route, we'll see the error that no template `events-show` is found. That's great! We knew that didn't exist, so we were expecting this error. The program is working! Let's make the template now.
 
-> [action]
->
+
 > Create a new file `views/events-show.handlebars`, and put the following code in it:
->
+
 ```html
 <!-- views/events-show.handlebars -->
 >
@@ -106,7 +100,6 @@ Now if we go to the route, we'll see the error that no template `events-show` is
 
 <!-- -->
 
-> [info]
 > You might need to add `dataValues`, (e.g. `event.dataValues.imgUrl`, `event.dataValues.title`, `event.dataValues.desc`) to make attributes render depending on your OS, and handlebars.
 
 Now what do you see? All the `View` links to events should work now!
@@ -115,10 +108,8 @@ Now what do you see? All the `View` links to events should work now!
 
 It makes sense from the user's perspective that after we create a new event, we should be automatically redirected to it, no? Let's change our create route to redirect to the show path.
 
-> [action]
->
 > Update the `redirect` line in your `/create` route in `app.js` to the following:
->
+
 ```js
 // CREATE
 ...
@@ -143,10 +134,8 @@ Let's make that show template a little prettier with some bootstrap.
 
 We'll wrap it in a responsive row and columns with an offset so its in the middle 6 columns of our container. We'll also add some classes that make the image responsively the full width (`w-100` = width 100%), rounded corners, and a margin bottom level 3. And we'll use the `.lead` class to fancy-up the description text.
 
-> [action]
->
 > Update `views/events-show.handlebars` to the following:
->
+
 ```html
 <div class="row mt-4">
   <div class="col-lg-6 offset-lg-3">
