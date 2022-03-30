@@ -35,7 +35,7 @@ SQL automatically creates an `id` attribute on anything you save. So we can use 
 
 ```html
 <!-- views/events-index.handlebars -->
->
+
 ...
 <a href="/events/{{this.id}}" class="btn btn-primary">View</a>
 ...
@@ -48,9 +48,9 @@ What happens if you click on that link? A friendly error! Let's do what it says 
 
 ```js
 // app.js
->
+
 ...
->
+
 // SHOW
 app.get('/events/:id', (req, res) => {
   res.send('I\'m an event')
@@ -69,9 +69,9 @@ Ok time to add a template with an actual `event` object! We'll update our `/show
 
 ```js
 // app.js
->
+
 ...
->
+
 // SHOW
 app.get('/events/:id', (req, res) => {
   // Search for the event by its id that was passed in via req.params
@@ -92,7 +92,7 @@ Now if we go to the route, we'll see the error that no template `events-show` is
 
 ```html
 <!-- views/events-show.handlebars -->
->
+
 <img src={{event.imgUrl}} />
 <h1>{{event.title}}</h1>
 <h2>{{event.desc}}</h2>
