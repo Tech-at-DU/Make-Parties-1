@@ -151,7 +151,7 @@ $ sequelize db:migrate
 
 Ok now resubmit the form... can you see your image on your newest event with an image?
 
-![](assets/dog-icon.png)
+![dogicon](assets/dog-icon.png)
 
 # Now Commit
 
