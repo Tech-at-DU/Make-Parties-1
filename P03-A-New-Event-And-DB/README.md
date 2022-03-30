@@ -126,30 +126,26 @@ Our server has no route called `/events` that accepts a POST HTTP method. So let
 
 First, you need to get ready to accept form data using an npm module called [body-parser](https://expressjs.com/en/resources/middleware/body-parser.html).
 
-> [action]
->
 > Install `body-parser`:
->
+
 ```bash
 $ npm install body-parser
 ```
 
 Body Parser is a module that allows express to see form data that is coming in from a POST request. So we'll initialize the `body-parser` module in our `app.js` file.
 
-> [action]
->
 > Initialize the `body-parser` module in our `app.js` file:
->
+
 ```js
 // app.js
 ...
 // INITIALIZE BODY-PARSER AND ADD IT TO APP
 const bodyParser = require('body-parser');
->
+
 ...
 // The following line must appear AFTER const app = express() and before your routes!
 app.use(bodyParser.urlencoded({ extended: true }));
->
+
 ...
 // CREATE
 app.post('/events', (req, res) => {
@@ -182,10 +178,8 @@ Our first step to setup a database is to add PostgreSQL to our environment.
 
 If you have Cloud9 PostgreSQL is already installed and you can do the following to start your database.
 
-> [action]
->
 > Run the following command:
->
+
 ```bash
 $ sudo service postgresql start
 ```
@@ -194,24 +188,20 @@ $ sudo service postgresql start
 
 If you are running your development environment on your computer, you'll have to install Postgres.
 
-> [action]
->
 > 1. Follow the steps outlined at [Postgres.app](https://postgresapp.com/) to get everything set up.
 > **Note:** Once you've installed, make sure to close/reopen your terminal for the changes to take effect.
->
+
 > 2. Now use `$ brew install postgresql` in your terminal to finish installing
 
 # Setting up Sequelize on your Project
 
 Cool, Postgres installed, now we gotta work on Sequelize:
 
-> [action]
->
 > Follow the "Quick Start: Getting Connected" section in the [Sequelize-It](https://ajbraus.github.io/sequelize-it/#/?id=quick-start-getting-connected) documentation.
->
+
 > **IMPORTANT NOTE 1:** It's very important to follow all 8 steps in the Quick Start, especially in terms of getting the `config.json` file set up correctly. If you run into `ECONNREFUSED` or `ETIMEDOUT` errors, go back to the guide and make sure you followed all 8 steps correctly.
 > **IMPORTANT NOTE 2:** You must install all the sequalize libraries locally, not globally, otherwise they will not work in heroku.
->
+
 > Local: 
 > Example: `npm install sequelize sequelize-cli pg pg-hstore`
 
@@ -227,10 +217,8 @@ These will make more sense once you start to use them, so hang tight.
 
 Sequelize has a set of **Generators** for creating boilerplate code for models, seeders, and migrations. Let's use one of those generator commands to make our `Event` model and migration
 
-> [action]
->
 > Run the following command in your terminal to make the `Event` model and migration:
->
+
 ```bash
 $ sequelize model:create --name Event --attributes title:string,desc:text
 ```
@@ -249,13 +237,12 @@ Our migration is a bit longer and adds a few other attributes to our Event:
 
 We'll use the `id` to fetch instances of events, and we'll use `createdAt` and `updatedAt` to order them.
 
-> [action]
 <!-- > First make sure your ports match what sequelize is expecting: port **3306**. Not doing this will throw an error when running the next command:
->
+
 > ![port](assets/port.png) -->
->
+
 > Start the server back up, and then run the migrations:
->
+
 ```bash
 $ sequelize db:migrate
 ```
@@ -264,7 +251,6 @@ If you run into errors around `mysql` or `mysql2` not being installed, install t
 
 Starting the migration adds the `Events` table to your database. Now we can save events to the database!
 
-> [info]
 > If you are on your own computer, you can download the program [Postico](https://eggerapps.at/postico/) and you can examine and edit your database's contents and structure.
 
 One more step and we can commit our code...
