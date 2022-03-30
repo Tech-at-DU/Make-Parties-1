@@ -70,35 +70,30 @@ If you are using Cloud9
 
 For reference for the rest of this chapter you can look at [ExpressJS's Getting Started](https://expressjs.com/en/starter/installing.html) docs for help with getting started.
 
-> [info]
+
 > Whenever you see the `$` in a command, that means it should be called in your computer's terminal. Remember: Don't include the `$` in your command.
 
 First things first, we need a tool to help us install things like packages and libraries. [Homebrew]((https://brew.sh/)) is Mac's package manager, so let's install that first!
 
-> [action]
->
+
 > Open your computer's terminal and then install Homebrew:
->
+
 ```bash
 $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
 Cool, now let's get our environment set up. `npm`, NodeJS's package manager, is installed automatically when you install node, so we'll be able to install node modules from our command line once we install node.
 
-> [action]
->
 > install NodeJS:
->
+
 ```bash
 $ brew install node
 ```
 
 Now that we have Node installed (and therefore have `npm`), Let's set up our working directory where we'll build our project.
 
-> [action]
->
 > Make a new directory called `make-parties`, then navigate into that directory
->
+
 ```bash
 $ mkdir make-parties
 $ cd make-parties
@@ -108,10 +103,8 @@ $ cd make-parties
 
 Use the command `npm init` ("npm initialize") to kick off a node project. This command will prompt you to define the configuration options that will be recorded in a file called `package.json`. _Just hit enter for each option to select the default choice._
 
-> [action]
->
 > Run `npm init` to kick off the project:
->
+
 ```bash
 $ npm init
 ```
@@ -122,7 +115,6 @@ Now if you open your project in Atom, you'll see the `package.json` which record
 
 Now we need to add Express.js.
 
-> [info]
 > Express.js is a web framework. Node.js is your server. Express is a structure that makes it easy to use node to handle web requests through HTTP, and then to add other libraries called **middleware** to do other common website patterns like render HTML, accept form data, serve images and other static assets, and everything else websites can do. With Express as a base, you can build literally anything in the internet from Google to Uber.
 
 Lets start by just getting Express to say "Hello World!". Then we'll add a template engine called [Handlebars](https://handlebarsjs.com/) so Express can render HTML.
@@ -134,9 +126,8 @@ Express.js is template engine-agnostic, meaning we could use all sorts of templa
 
 Our main file of our whole application we'll call `app.js`
 
-> [action]
 > First install Express.js and then create the main file using the `touch` command.
->
+
 ```bash
 $ npm install express
 $ touch app.js
@@ -144,34 +135,30 @@ $ touch app.js
 
 Now your project should have two files and a folder: `app.js`, `package.json`, and `node_modules`.
 
-> [action]
->
 > **(If your on Cloud9 ignore this step)**
 > Now if you are on your computer, open your project's code base using the Atom text editor by typing:
->
+
 ```bash
 $ atom .
 ```
 
 Let's add some standard Express.js code to `app.js` to show a hello world:
 
-> [action]
->
 > Add the following to `app.js`:
->
+
 ```js
 // Initialize express
 const express = require('express')
 const app = express()
->
+
 // Tell our app to send the "hello world" message to our home page
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
->
+
 // Choose a port to listen on
 const port = process.env.PORT || 3000;
->
+
 // Tell the app what port to listen on
 app.listen(port, () => {
   console.log('App listening on port 3000!')
@@ -180,16 +167,14 @@ app.listen(port, () => {
 
 Now run your project!
 
-> [action]
->
 > Run the following command to get your project up and running:
->
+
 ```bash
 $ node app.js
 ```
->
+
 > **If you are on Cloud9:** select Preview > Preview Running Application to open a browser panel.
->
+
 > **If you are on your computer:** point your browser to `http://localhost:3000`.
 
 Remember that we still haven't added a template engine yet. We are just sending text back to the browser, but you should see an empty page except for the the text "Hello World!"
@@ -198,10 +183,8 @@ Remember that we still haven't added a template engine yet. We are just sending 
 
 Let's install `nodemon` if you haven't already. [Nodemon](https://nodemon.io/) just helps us by restarting our server every time we change our code.
 
-> [action]
->
 > Install and run `nodemon`:
->
+
 ```bash
 $ npm install nodemon -g
 $ nodemon app.js
@@ -219,25 +202,22 @@ Let's add our templating engine Handlebars.js so our Express.js server can rende
 
 We're also going to add a package called `allow-prototype-access` to avoid a common error we will run into later.
 
-> [action]
 > Install Handlebars.js to your project using the `express-handlebars` node module.
->
+
 ```bash
 $ npm install express-handlebars @handlebars/allow-prototype-access
 ```
 
 Now that we've installed the package, we must require it or **initialize** it in your app:
 
-> [action]
->
 > Update `app.js` to include the following after the `const app = express()` line:
->
+
 ```js
 // require handlebars
 const exphbs = require('express-handlebars');
 const Handlebars = require('handlebars')
 const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
->
+
 // Use "main" as our default layout
 app.engine('handlebars', exphbs({ defaultLayout: 'main', handlebars: allowInsecurePrototypeAccess(Handlebars) }));
 // Use handlebars to render
@@ -246,12 +226,11 @@ app.set('view engine', 'handlebars');
 
 Now let's render a handlebars home page!
 
-> [action]
 > Extend your **root route** ('/') to render `home.handlebars`.
->
+
 ```js
 // app.js
->
+
 // Render the "home" layout for the main page and send the following msg
 app.get('/', (req, res) => {
   res.render('home', { msg: 'Handlebars are Cool!' });
@@ -260,12 +239,10 @@ app.get('/', (req, res) => {
 
 Refresh your browser now and read the error you get carefully. This error tells us that our application can't find a `home.handlebars` template yet (because we haven't made it!).
 
-> [info]
 > It is useful to try to predict what error you might get as you are coding, and see if you get the error you expected. Errors can be a great way to check your work as you go and not go too far before checking your work.
 
 <!-- -->
 
-> [action]
 > Create the `views`, `layouts` folders and `main.handlebars` and file.
 ```bash
 $ mkdir views
@@ -277,10 +254,9 @@ So now we have our **views** folder setup with a **layout template** called `mai
 
 Now we'll add some boilerplate code to the `main.handlebars` layout template. Remember that we used Handlebars because it has a **Layout Template**. A **layout template** is a super-template that all other templates will inherit from. This is like a "super-template" that all other templates are embedded in. Having a layout template means we can put things that go on *every* page in just one file of code. These templates will be threaded in right at the `{{{body}}}`.
 
-> [action]
->
+
 > Add the following to `views/layouts/main.handlebars`
->
+
 ```html
 <!-- views/layouts/main.handlebars -->
 <!doctype html>
@@ -299,10 +275,8 @@ Now we'll add some boilerplate code to the `main.handlebars` layout template. Re
 
 Now we can make our `views/home.handlebars` template (a new file in our `views` director). This template will use `main.handlebars` as a boilerplate, but what we write in `home.handlebars` will render in the `{{{body}}}` portion of `main.handlebars`:
 
-> [action]
->
 > Create the `views/home.handlebars` file and then add the following to it:
->
+
 ```html
 <!-- home.handlebars -->
 <h1>{{msg}}</h1>
