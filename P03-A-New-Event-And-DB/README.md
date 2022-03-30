@@ -42,10 +42,8 @@ First things first - what does the user see?
 
 The user will have to click "New Event" to create a new event. So let's put a link into the `events-index` template.
 
-> [action]
->
 > Add the following `<h1>` and `<a>` into `views/events-index.handlebars`:
->
+
 ```html
 <!-- views/events-index.handlebars -->
 <div class="row mt-4">
@@ -70,10 +68,8 @@ Remember that errors are not bad. They are like sign posts that tell you what to
 
 Now we have to make a route to the `/events/new` path, and have it render a `events-new` template.
 
-> [action]
->
 > Add the following route to `app.js` to handle `/events/new`:
->
+
 ```js
 // NEW
 app.get('/events/new', (req, res) => {
@@ -83,13 +79,11 @@ app.get('/events/new', (req, res) => {
 
 If we navigate our browser to `/events/new` we'll get a friendly little error reminding us that we don't have a template called `events-new.handlebars` yet. So let's put that into our `views` folder.
 
-> [action]
->
 > Create the `views/events-new.handlebars` and add the following code to it:
->
+
 ```html
 <!-- views/events-new.handlebars -->
->
+
 <form method="POST" action="/events">
   <fieldset>
     <legend>New Event</legend>
@@ -103,18 +97,17 @@ If we navigate our browser to `/events/new` we'll get a friendly little error re
       <input type="text" name="desc" />
     </p>
   </fieldset>
->
+
   <!-- BUTTON -->
   <p>
     <button type="submit">Save Event</button>
   </p>
->
+
 </form>
 ```
 
 <!-- -->
 
-> [info]
 > Notice a few things about our form. The form tag has an HTML attribute called `action` that has a value equal to the path we want our form to submit its data to. `/events` is the route to our create action that we will add to our server in the next step.
 
 Now if you navigate to `/events/new` you should see our new form looking great:
