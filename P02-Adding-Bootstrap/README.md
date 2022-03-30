@@ -124,7 +124,7 @@ Refresh and see that this gives us some satisfying gutters on the sides of the p
 Let's add some bootstrap to make things look better. First we'll wrap things in a `row` (with a `margin-top` utility class) and some responsive columns so the events sit in the middle 6 columns of the page when the browser window is `lg` (large).
 
 > Update `views/events-index.handlebars` to the following:
-
+>
 >```html
   <!-- events-index -->
   <div class="row mt-4">
@@ -138,11 +138,11 @@ Let's add some bootstrap to make things look better. First we'll wrap things in 
       </div>
   </div>
 >```
-
+>
 Next we'll add some Bootstrap Card enhanced html inside of the `#each`:
 
 > Update the inside of the `#each` in `views/events-index.handlebars` to the following:
-
+>
 > ```html
   {{#each events}}
     <div class="card mt-3">
@@ -158,7 +158,7 @@ Next we'll add some Bootstrap Card enhanced html inside of the `#each`:
     </div>
   {{/each}}
 >```
-
+>
 # Product So Far
 
 Looks a lot nicer now, doesn't it?
