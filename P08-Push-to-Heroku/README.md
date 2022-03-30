@@ -16,8 +16,6 @@ And don't forget the best resource: Googling your error!
 
 # Sign Up For and Install Heroku
 
-> [action]
->
 > First you need to create a Heroku account at [heroku.com](https://www.heroku.com).
 
 We will only be using free tools from Heroku, but to add free versions of specific add-on's, Heroku will require a credit card or debit card number.
@@ -26,50 +24,44 @@ Then you will need to add the Heroku Command Line Interface (CLI) to your bash t
 
 ## Cloud9
 
-> [action]
->
+
 > In Cloud9 it is already installed but should be updated:
->
+
 ```bash
 $ wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 ```
 
 ## Your Computer
 
-> [action]
->
+
 > In your computer you can install it with homebrew
->
+
 ```bash
 $ brew install heroku/brew/heroku
 ```
 
 # Login to Heroku
 
-> [action]
->
+
 > Now login to heroku
->
+
 ```bash
 $ heroku login -i
 ```
 
 Now let's use the `heroku` command to create a heroku app and name it with "make-parties" and then our initials. So someone named Samantha Bee would be "make-parties-sb". This `heroku create` command will add our heroku app as a git remote repository that we will be able to push to using the git command `git push`. We can see our remote repos by using the command `git remote -v`.
 
-> [action]
->
+
 > Run the `heroku create` command:
->
+
 ```bash
 $ heroku create make-parties-YOURINITIALS
 ```
 
 Navigate your browser to `https://make-parties-YOURINITIALS.herokuapp.com` and see that there is an error there, and that it instructs you to run `heroku logs --tail`.
 
-> [action]
->
 > Run `heroku logs --tail` in your terminal:
->
+
 ```bash
 $ heroku logs --tail
 ```
@@ -113,18 +105,14 @@ The important line here is in the middle:
 
 Heroku requires a start script. So we're going to add that through our `package.json` file.
 
-> [info]
->
 > Even if you don't receive any of these errors, it's important to still follow these steps so that your setup for heroku is correct.
 
 # Adding Your Procfile
 
 Heroku calls `npm start` when it starts an node project. So you have to define that script in the `package.json` file.
 
-> [action]
->
 > Open `package.json` and add the following "start" script to it:
->
+
 ```json
 ...
   "scripts": {
@@ -136,10 +124,8 @@ Heroku calls `npm start` when it starts an node project. So you have to define t
 
 Alright, now we can add and commit and push our code to heroku and open our new website.
 
-> [action]
->
 > Follow the usual commit steps, but this time we'll push to `heroku master`:
->
+
 ```bash
 $ git add .
 $ git commit -m 'adding start script'
@@ -152,20 +138,17 @@ Navigate your browser to `https://make-parties-YOURINITIALS.herokuapp.com`. You 
 
 It looks like the error is that we cannot connect to our PostgreSQL database. That's because it is looking at our `db/config/config.json` file and then at the `production` option, and then looking for the `PROD_DATABASE_URL` URI, but that is not defined on Heroku. So we have to add a PostgreSQL database to Heroku using an add-on called [Heroku Postgres](https://elements.heroku.com/addons/heroku-postgresql).
 
-> [action]
->
 > Add Heroku Postgres:
->
+
 ```bash
 $ heroku addons:create heroku-postgresql:hobby-dev
 ```
 
 We will still have problems though because we need to update our `config.json`.
 
-> [action]
->
+
 > Update `db/config/config.json` to have the following in the `production` section:
->
+
 ```json
  ...
  "production": {
@@ -182,20 +165,16 @@ We will still have problems though because we need to update our `config.json`.
 
 We also need to add a Heroku config variable to mark that we are in production:
 
-> [action]
->
 > Add a Heroku config variable
->
+
 ```bash
 $ heroku config:set NODE_ENV=production
 ```
 
 Let's get our code onto Heroku now:
 
-> [action]
->
 > Push up to Heroku:
->
+
 ```bash
 $ git add .
 $ git commit -m "pushing heroku config info"
@@ -204,10 +183,8 @@ $ git push heroku master
 
 Finally, we need run our migrations onto Heroku as well before anything will work properly!
 
-> [action]
->
 > Run the following commands for the migration:
->
+
 ```bash
 $ heroku run bash
 $ sequelize -m # this just makes sure sequelize is installed
