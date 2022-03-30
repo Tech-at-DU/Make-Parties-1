@@ -33,15 +33,13 @@ We want people to be able to edit and update events, let's again start from the 
 
 So let's make the edit link inside our responsive row and middle 6 columns:
 
-> [action]
->
 > Place the edit link directly underneath the `div` for `desc` in `views/events-show.handlebars`:
->
+
 ```html
 <!-- views/events-show.handlebars -->
->
+
 ...
->
+
     <div class="text-right">
       <a href="/events/{{event.id}}/edit">Edit</a>
     </div>
@@ -52,15 +50,13 @@ Ok now if we click that edit link, we'll see correctly that the route is not fou
 
 The edit action is like the show action because we look up the `event` by its `id` in the url parameter, but then we render the information in a template as editable form elements.
 
-> [action]
->
 > Add the `/edit` route in `app.js`:
->
+
 ```js
 // app.js
->
+
 ...
->
+
 // EDIT
 app.get('/events/:id/edit', (req, res) => {
   models.Event.findByPk(req.params.id).then((event) => {
@@ -79,21 +75,19 @@ And of course we'll need that `events-edit` template. This template is a bit wei
 
 Let's start by building out the responsive row and columns
 
-> [action]
->
 > Create the `views/events-edit.handlebars` file and add the following code to it:
->
+
 ```html
 <!-- views/events-edit.handlebars -->
 <div class="row mt-4">
   <div class="col-lg-6 offset-lg-3">
->
+
   </div>
 </div>
 ```
->
+
 > Now add the Card boilerplate inside `<div class="col-lg-6 offset-lg-3">` from above:
->
+
 ```html
 <div class="card">
   <div class="card-body">
@@ -101,14 +95,14 @@ Let's start by building out the responsive row and columns
       <h3>Update Event</h3>
     </div>
     <div class="card-text">
->
+
     </div>
   </div>
 </div>
 ```
->
+
 > Finally, add the form into the `.card-text` block from above:
->
+
 ```html
 <form action="/events/{{event.id}}?_method=PUT" method="post">
   <div class="form-group">
@@ -140,44 +134,38 @@ If you submit this form now, it will say there is no POST route to this path. We
 
 Remember that you needed to intercept this POST request and make sure its processed as a PUT request so it goes to our update action. (this will work for our delete action later too!). We'll use the [method-override](https://github.com/expressjs/method-override) middleware.
 
-> [action]
->
 > install method-override:
->
+
 ```bash
 $ npm install method-override --save
 ```
 
 After importing the new package use `require('method-override')` to import it into your project.
 
-> [action]
->
 > Now add `methodOverride` as middleware after `const express = require('express')` but before your routes.
->
+
 ```js
 const express = require('express')
 const methodOverride = require('method-override')
->
+
 ...
->
+
 const app = express()
->
+
 ...
->
+
 // override with POST having ?_method=DELETE or ?_method=PUT
 app.use(methodOverride('_method'))
 ```
 
 Now you can create your update action and it will receive requests with a PUT method.
 
-> [action]
->
 > Add the `/update` route to `app.js`:
->
+
 ```js
 // app.js
 ...
->
+
 // UPDATE
 app.put('/events/:id', (req, res) => {
   models.Event.findByPk(req.params.id).then(event => {
@@ -198,13 +186,11 @@ Make sure you're able to edit an event!
 
 Did you notice that the code of our `events-new` and `events-edit` have a lot of similarities? Pretty much everything inside the `form` tag is the same. Let's use a **Partial Template** to pull that code out into its own template.
 
- > [action]
- >
  > Create `views/partials/events-form.handlebars` with the following code:
->
+
 ```html
 <!-- views/partials/events-form.handlebars -->
->
+
 <div class="form-group">
   <label for="title">Title</label>
   <input name="title" class="form-control" placeholder="Pickup Basketball" value="{{event.title}}" />
@@ -221,15 +207,13 @@ Did you notice that the code of our `events-new` and `events-edit` have a lot of
 
 And now we can use this partial to replace that information in both our new and edit templates.
 
-> [action]
->
 > Update both `views/events-new.handlebars` and `views/events-edit.handlebars` to the following:
->
+
 > **events-new**
->
+
 ```html
 <!-- views/events-new.handlebars -->
->
+
 <form action="/events" method="post">
   {{> events-form }}
   <div class="text-right">
@@ -238,12 +222,12 @@ And now we can use this partial to replace that information in both our new and 
 </form>
 ...
 ```
->
+
 > **events-edit**
->
+
 ```html
 <!-- views/events-edit.handlebars -->
->
+
 <div class="row mt-4">
     <div class="col-lg-6 offset-lg-3">
         <div class="card">
