@@ -29,10 +29,8 @@ As always, we start with what the users sees and does. So let's make a link to d
 
 We can't set an `<a>` tag's method (it is always GET) so we are going to use a form to submit a DELETE request to our delete action path.
 
-> [action]
->
 > Add the following delete form to `views/events-edit.handlebars` following the pre-existing edit form block:
->
+
 ```html
 <!-- views/events-edit.handlebars -->
 ...
@@ -53,14 +51,13 @@ Your events-edit template should look like this:
 
 But there is no DELETE route, so if you submit this you'll get a helpful error telling you that. So we need a delete action route. After deleting the event, it should redirect to the home page (`events-index`) because the event will be gone.
 
-> [action]
->
+
 > Implement the `/delete` route in `app.js`:
->
+
 ```js
 // app.js
 ...
->
+
 // DELETE
 app.delete('/events/:id', (req, res) => {
   models.Event.findByPk(req.params.id).then(event => {
@@ -88,8 +85,6 @@ But there is still one problem. All the event routes are all hanging out in the 
 
 # Refactoring and Adding a Controller
 
-> [action]
->
 > First make a folder called `controllers`, now add the file `events.js` to this folder.
 
 Our `app.js` file is not aware that there is a controllers folder or a events controller yet. We have to connect them. There are basically two ways to connect this controller to our app:
@@ -101,15 +96,13 @@ In this case we are going to use the JavaScript ES5 modules system both to intro
 
 `require` can let you connect any file to any other in JavaScript. All you have to do is put `module.exports` into one file, and then `require(name-of-file)` in the other. Let's look at an example in our controller.
 
-> [action]
->
 > Take the `/index` function out from `app.js` and put it into the `controllers/events.js` file:
->
+
 ```js
 //events.js
->
+
 module.exports = function (app, models) {
->
+
     // INDEX
     app.get('/', (req, res) => {
         models.Event.findAll({ order: [['createdAt', 'DESC']] }).then(events => {
@@ -121,14 +114,12 @@ module.exports = function (app, models) {
 
 Now let's import our events.js file into our app.js file. We'll pass the `app` and our model `Event` into the file as well.
 
-> [action]
->
 > Add the following `require` into `app.js`:
->
+
 ```js
 // app.js
 ...
->
+
 require('./controllers/events')(app, models);
 ```
 
@@ -136,8 +127,6 @@ Manually test that you can still navigate to the `events-index` page.
 
 Once you've done that, now we need to do the same for the rest of our routes.
 
-> [action]
->
 > Migrate the rest of the events routes into the `controllers/events.js` controller file from `app.js`
 
 Make sure to test all of your functionality to insure that you didn't accidentally break something in the code migration!
