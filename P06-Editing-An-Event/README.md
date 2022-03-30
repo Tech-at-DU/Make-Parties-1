@@ -270,6 +270,4 @@ $ git push
 
 # Stretch Challenge: "Cancel" buttons
 
-> [challenge]
->
 > Sometimes people might start making a resource and then want to cancel. Can you add a "Cancel" button next to the "Save Event" button? What will it do? Where will it link to?
