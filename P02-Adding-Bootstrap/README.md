@@ -21,18 +21,17 @@ It is easy to get started with bootstrap quickly by using the CDN links that boo
 
 We'll add the `<link>` to bootstrap's css in our `<head>` tag in the `views/layouts/main.handlebars` file. And although we aren't going to use any of bootstrap's JavaScript's components, for completeness's sake, we'll put the JavaScript `<script>` tag just before the closing `</body>` tag.
 
-> [info]
->
+
 > You should always reference the [latest Bootstrap CDN links](https://www.bootstrapcdn.com/) and use those to make sure everything is up to date.
 
 <!-- -->
 
-> [action]
+
 > Add the following `<link>` and `<script>` tags to `views/layouts/main.handlebars`:
->
+
 ```html
 <!-- views/layouts/main.handlebars -->
->
+
 <!doctype html>
 <html>
 <head>
@@ -59,19 +58,18 @@ Add the most common navigational component - a top navbar. We'll have it contain
 
 To do this, we need to make a new **partial**. Partials are like html components that you can reuse in multiple views. They only contain enough html to render the component, hence why they're called a "partial".
 
-> [action]
 > Create a new folder `views/partials`, and then create a new file `navbar.handlebars` in that `views/partials` directory.
->
+
 > Now add the following code to `views/partials/navbar.handlebars`
->
+
 ```html
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">Make Parties</a>
->
+
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
->
+
   <div class="collapse navbar-collapse">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
@@ -84,16 +82,14 @@ To do this, we need to make a new **partial**. Partials are like html components
 
 Great, now we need to add it to our `main` layout so that all pages will have it! We'll use Handlebar's `{{> partial}}` syntax to inject the partial we just made into our main template.
 
-> [action]
->
 > Update `views/layouts/main.handlebars` to include the `navbar`:
->
+
 ```html
 ...
 <body>
->
+
   {{> navbar}}
->
+
   {{{body}}}
  ...
 ```
@@ -108,8 +104,6 @@ People argue about the usefulness of some of the more complex parts of Bootstrap
 
 Bootstrap ships with a 12-column grid. Meaning you can break up the whole page, or any element into 12 columns and construct an appealing layout.
 
-> [action]
->
 > Start by updating `views/layouts/main.handlebars` by wrapping the `{{{body}}}` with a `container` class.
 
 ```html
@@ -129,8 +123,6 @@ Refresh and see that this gives us some satisfying gutters on the sides of the p
 
 Let's add some bootstrap to make things look better. First we'll wrap things in a `row` (with a `margin-top` utility class) and some responsive columns so the events sit in the middle 6 columns of the page when the browser window is `lg` (large).
 
-> [action]
->
 > Update `views/events-index.handlebars` to the following:
 
 >```html
@@ -149,8 +141,6 @@ Let's add some bootstrap to make things look better. First we'll wrap things in 
 
 Next we'll add some Bootstrap Card enhanced html inside of the `#each`:
 
-> [action]
->
 > Update the inside of the `#each` in `views/events-index.handlebars` to the following:
 
 > ```html
