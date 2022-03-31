@@ -32,11 +32,11 @@ Follow the same approach used in the tutorial, start with what users will see. U
   <div class="col-lg-6">
     ...
   </div>
->
+
   <div class="col-lg-4 offset-lg-1">
     <a href="/events/{{event.id}}/rsvps/new" class="btn btn-primary btn-sm">RSVP</a>
   </div>
->
+
 </div>
 ```
 
@@ -65,9 +65,9 @@ module.exports = (app, models) => {
       res.render('rsvps-new', { event: event });
     });
   });
->
+
   // CREATE
->
+
   // DESTROY  
 }
 ```
@@ -139,9 +139,9 @@ Now we want to setup our rsvps create action so we have somewhere to submit our 
 
 ```js
 // controllers/rsvps.js
->
+
 ...
->
+
 // CREATE
 app.post('/events/:eventId/rsvps', (req, res) => {
     models.Rsvp.create(req.body).then(rsvp => {
@@ -196,9 +196,9 @@ Now in the migration, let's add the EventId column then we are going to change t
 
 ```js
 // migration
->
+
 'use strict';
->
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.addColumn(
@@ -215,7 +215,7 @@ module.exports = {
       }
     );
   },
->
+
   down: (queryInterface, Sequelize) => {
     return queryInterface.removeColumn('Rsvps', 'EventId');
   }
@@ -293,9 +293,9 @@ Now that we've got Rsvps saving and associated with their parent event, we can u
 
 ```js
 // controllers/events.js
->
+
 ...
->
+
 // SHOW
 app.get('/events/:id', (req, res) => {
     models.Event.findByPk(req.params.id, { include: [{ model: models.Rsvp }] }).then(event => {
@@ -319,7 +319,7 @@ Now in our template we can iterate over `event.Rsvps` to display them. We can al
         <b>RSVPs ({{event.Rsvps.length}})</b>
         <a href="/events/{{event.id}}/rsvps/new" class="btn btn-primary btn-sm">RSVP</a>
     </div>
->
+
     <div class="list-group mt-4">
         {{#each event.Rsvps}}
         <div class="list-group-item">
@@ -340,9 +340,9 @@ We've got almost everything hooked up, but what about that RSVP button on the ev
 
 ```HTML
 ...
->
+
 <a href="/events/{{this.id}}/rsvps/new" class="btn btn-info">Rsvp</a>
->
+
 ...
 ```
 
