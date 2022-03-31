@@ -46,8 +46,7 @@ app.get('/events/:id', async (req, res) => {
 
 Notice that the whole function is called `async`, and the `await` keyword prefaces any function that returns a promise.
 
-> [challenge]
->
+
 > Try using this pattern to update one of your own routes.
 
 # Adding Comments
@@ -56,10 +55,8 @@ Imagine you get some feedback that people planning and rsvp'd to events would li
 
 Comments are a lot like Rsvps, so you should be able to add them by referencing that code.
 
-> [challenge]
->
 > Here are the steps you should take:
->
+
 > 1. Add a new comment form to the `events-show` template below the `{{event.desc}}`.
 > 1. Have that form submit to a **nested** comments create action in its own `comments.js` controller.
 > 1. Create a comment model with the attribute `content`, and then add the **foreign key** `EventId` just like Rsvps has. (Reminder - make sure to add the association to the Comment and Event models)
