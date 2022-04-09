@@ -1,6 +1,5 @@
 ---
-title: "Bells and Whistles"
-slug: bells-and-whistles
+# Bells and Whistles
 ---
 
 Now there are a few more things we can do to tighten up our website and make it look more like the big leagues. Let's look at a few.
