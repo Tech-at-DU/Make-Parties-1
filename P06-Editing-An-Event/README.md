@@ -1,6 +1,5 @@
 ---
-title: "Edit Route: Editing and Updating a Resource"
-slug: editing-a-event
+# Edit Route: Editing and Updating a Resource
 ---
 
 1. ~~Users can view all events (index)~~
