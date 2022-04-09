@@ -1,6 +1,5 @@
 ---
-title: "New Event Form"
-slug: creating-a-event
+# New Event Form
 ---
 
 Remember we are doing Resourceful and RESTful architecture to our MVC structured app. We've made some views in the `views` folder, instantiated a (fake) model, and put our controller logic (our routes) into the `app.js` file. As our model and controller logic grows, we can move them into other files. For this app it is so simple, that we'll just leave all that logic in the `app.js` file.
