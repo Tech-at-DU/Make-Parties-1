@@ -1,6 +1,5 @@
 ---
-title: "Show Route: See One Resource"
-slug: showing-one-event
+# Show Route: See One Resource
 ---
 
 1. ~~Users can view all events (index)~~
