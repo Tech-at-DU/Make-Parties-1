@@ -1,6 +1,5 @@
 ---
-title: "Styling with Bootstrap"
-slug: adding-bootstrap
+# Styling with Bootstrap
 ---
 
 Now that you have the user's experience mapped out and the functionality built, you can style your pages using Twitter's project [Bootstrap](http://getbootstrap.com/). Bootstrap is the web's most popular **Design System**.
