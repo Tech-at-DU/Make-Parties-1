@@ -1,6 +1,5 @@
 ---
-title: "See All Events"
-slug: index-events
+# See All Events
 ---
 
 Following our **User Stories** we are going to define a single **Resource** in this app called an `Event`.
