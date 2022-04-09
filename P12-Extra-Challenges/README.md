@@ -1,6 +1,5 @@
 ---
-title: "Extra Challenges"
-slug: extra-challenges
+# Extra Challenges
 ---
 
 This last chapter is all stretch challenges for those who want to dive deeper into the following areas:
