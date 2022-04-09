@@ -1,6 +1,5 @@
 ---
-title: "Create Route: Saving a New Resource"
-slug: creating-a-event
+# Create Route: Saving a New Resource
 ---
 
 So now we have
@@ -163,6 +162,4 @@ $ git push
 
 # Stretch Challenge: Adding a TakesPlaceOn Attribute
 
-> [challenge]
->
 > Events have to take place on a certain day. Can you add a `takesPlaceOn` attribute that is a `Date`, and then use `<input type="date">` elements? You might have to google for an example to see how this works.
