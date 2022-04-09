@@ -1,6 +1,5 @@
 ---
-title: "Adding Rsvps (Form)"
-slug: adding-rsvps
+# Adding Rsvps (Form)
 ---
 
 Let's not forget about our **User Stories**
