@@ -1,6 +1,5 @@
 ---
-title: "Delete Route: Destroying a Resource"
-slug: deleting-a-event
+# Delete Route: Destroying a Resource
 ---
 
 1. ~~Users can view all events (index)~~
