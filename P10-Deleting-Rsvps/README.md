@@ -1,6 +1,5 @@
 ---
-title: "Deleting RSVPs"
-slug: deleting-rsvps
+# Deleting RSVPs
 ---
 
 1. ~~Users can view all events (index)~~
