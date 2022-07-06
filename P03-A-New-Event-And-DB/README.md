@@ -39,7 +39,7 @@ First things first - what does the user see?
 
 The user will have to click "New Event" to create a new event. So let's put a link into the `events-index` template.
 
-> Add the following `<h1>` and `<a>` into `views/events-index.handlebars`:
+Add the following `<h1>` and `<a>` into `views/events-index.handlebars`:
 
 ```html
 <!-- views/events-index.handlebars -->
@@ -48,7 +48,7 @@ The user will have to click "New Event" to create a new event. So let's put a li
         <!-- Add the following two lines -->
         <h1>Reviews</h1>
         <a href="/events/new">New Event</a>
->
+
         <h1>Events</h1>
         {{#each events}}
         ...
@@ -65,7 +65,7 @@ Remember that errors are not bad. They are like sign posts that tell you what to
 
 Now we have to make a route to the `/events/new` path, and have it render a `events-new` template.
 
-> Add the following route to `app.js` to handle `/events/new`:
+Add the following route to `app.js` to handle `/events/new`:
 
 ```js
 // NEW
@@ -76,7 +76,7 @@ app.get('/events/new', (req, res) => {
 
 If we navigate our browser to `/events/new` we'll get a friendly little error reminding us that we don't have a template called `events-new.handlebars` yet. So let's put that into our `views` folder.
 
-> Create the `views/events-new.handlebars` and add the following code to it:
+Create the `views/events-new.handlebars` and add the following code to it:
 
 ```html
 <!-- views/events-new.handlebars -->
@@ -103,9 +103,7 @@ If we navigate our browser to `/events/new` we'll get a friendly little error re
 </form>
 ```
 
-<!-- -->
-
-> Notice a few things about our form. The form tag has an HTML attribute called `action` that has a value equal to the path we want our form to submit its data to. `/events` is the route to our create action that we will add to our server in the next step.
+Notice a few things about our form. The form tag has an HTML attribute called `action` that has a value equal to the path we want our form to submit its data to. `/events` is the route to our create action that we will add to our server in the next step.
 
 Now if you navigate to `/events/new` you should see our new form looking great:
 
@@ -131,7 +129,7 @@ $ npm install body-parser
 
 Body Parser is a module that allows express to see form data that is coming in from a POST request. So we'll initialize the `body-parser` module in our `app.js` file.
 
-> Initialize the `body-parser` module in our `app.js` file:
+Initialize the `body-parser` module in our `app.js` file:
 
 ```js
 // app.js
@@ -185,16 +183,18 @@ $ sudo service postgresql start
 
 If you are running your development environment on your computer, you'll have to install Postgres.
 
-> 1. Follow the steps outlined at [Postgres.app](https://postgresapp.com/) to get everything set up.
+
+1. Follow the steps outlined at [Postgres.app](https://postgresapp.com/) to get everything set up.
+
 > **Note:** Once you've installed, make sure to close/reopen your terminal for the changes to take effect.
 
-> 2. Now use `$ brew install postgresql` in your terminal to finish installing
+2. Now use `$ brew install postgresql` in your terminal to finish installing
 
 # Setting up Sequelize on your Project
 
 Cool, Postgres installed, now we gotta work on Sequelize:
 
-> Follow the "Quick Start: Getting Connected" section in the [Sequelize-It](https://ajbraus.github.io/sequelize-it/#/?id=quick-start-getting-connected) documentation.
+Follow the "Quick Start: Getting Connected" section in the [Sequelize-It](https://ajbraus.github.io/sequelize-it/#/?id=quick-start-getting-connected) documentation.
 
 > **IMPORTANT NOTE 1:** It's very important to follow all 8 steps in the Quick Start, especially in terms of getting the `config.json` file set up correctly. If you run into `ECONNREFUSED` or `ETIMEDOUT` errors, go back to the guide and make sure you followed all 8 steps correctly.
 > **IMPORTANT NOTE 2:** You must install all the sequalize libraries locally, not globally, otherwise they will not work in heroku.
@@ -238,7 +238,7 @@ We'll use the `id` to fetch instances of events, and we'll use `createdAt` and `
 
 > ![port](assets/port.png) -->
 
-> Start the server back up, and then run the migrations:
+Start the server back up, and then run the migrations:
 
 ```bash
 $ sequelize db:migrate
@@ -248,6 +248,6 @@ If you run into errors around `mysql` or `mysql2` not being installed, install t
 
 Starting the migration adds the `Events` table to your database. Now we can save events to the database!
 
-> If you are on your own computer, you can download the program [Postico](https://eggerapps.at/postico/) and you can examine and edit your database's contents and structure.
+If you are on your own computer, you can download the program [Postico](https://eggerapps.at/postico/) and you can examine and edit your database's contents and structure.
 
 One more step and we can commit our code...
