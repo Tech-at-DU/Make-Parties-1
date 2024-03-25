@@ -1,6 +1,8 @@
 ---
-# Push to Production with Heroku
+# Push to Production with Heroku or Render
 ---
+
+Heroku costs $$$ now. So you can follow these instructions to push to Heroku. OR! You can follow [this link to push to Render](https://www.freecodecamp.org/news/how-to-deploy-nodejs-application-with-render/) which is free.
 
 Time to ship some code! Since we've built and styled our Make Parties app, let's show it to the world by putting it online. We'll use a service called [Heroku](https://www.heroku.com) that is free, but it does require a **credit card** to be on file.
 
