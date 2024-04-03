@@ -4,6 +4,22 @@
 
 Heroku costs $$$ now. So you can follow these instructions to push to Heroku. OR! You can follow [this link to push to Render](https://www.freecodecamp.org/news/how-to-deploy-nodejs-application-with-render/) which is free.
 
+To setup your DB in Render.
+
+1.  Create a postgres database in Render.
+2.  Add a DATABASE_URL environment variable to your Render tab Environment, and set its value to the Internal Database URI from your Render postgres database.
+3.  Set a NODE_ENV enviornmental variable in Render, and set it to "production"
+4.  In `package.json` update your build command to read `"build": "npm install && sequelize db:migrate"`
+5.  Edit your `db/config/config.json` `"production"` section to read like this:
+  
+  ```
+  "production": {
+     "use_env_variable": "DATABASE_URL",
+     "dialect": "postgres"
+   }
+  ```
+
+
 Time to ship some code! Since we've built and styled our Make Parties app, let's show it to the world by putting it online. We'll use a service called [Heroku](https://www.heroku.com) that is free, but it does require a **credit card** to be on file.
 
 ## Resources
